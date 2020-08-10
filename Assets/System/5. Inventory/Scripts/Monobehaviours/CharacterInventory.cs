@@ -246,7 +246,12 @@ public class CharacterInventory : MonoBehaviour
         while (slotCounter < 29)
         {
             slotCounter++;
-            inventoryDisplaySlots[slotCounter].sprite = null;
+			inventoryDisplaySlots [slotCounter].sprite = null;
+			/*
+			if (slotCounter <  inventoryDisplaySlots.Length && inventoryDisplaySlots [slotCounter] != null) {
+				inventoryDisplaySlots [slotCounter].sprite = null;
+			}
+			*/
         }
     }
 

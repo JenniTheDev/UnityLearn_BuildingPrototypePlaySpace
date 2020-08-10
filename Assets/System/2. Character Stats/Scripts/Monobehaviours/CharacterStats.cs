@@ -11,8 +11,8 @@ public class CharacterStats : MonoBehaviour
     public CharacterStats_SO characterDefinition;
     
     public CharacterInventory charInv;
-    public GameObject characterWeaponSlot;
-    public ItemPickUp defaultWeapon;
+	public GameObject characterWeaponSlot;
+	public ItemPickUp defaultWeapon;
 
     public bool regenHealth = true;
 

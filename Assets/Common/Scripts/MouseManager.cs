@@ -9,13 +9,19 @@ public class MouseManager : MonoBehaviour
 
     public Texture2D pointer;
     public Texture2D target;
-    public Texture2D doorway;
-    public Texture2D sword;
+	public Texture2D doorway;
+	public Texture2D sword;
+	/*
+	public Texture2D shovel;
+	*/
 
     public EventVector3 OnClickEnvironment;
-    public EventVector3 OnRightClickEnvironment;
-    public EventGameObject OnClickAttackable;
-    public EventGameObject OnClickHarvestable;
+	public EventVector3 OnRightClickEnvironment;
+	public EventGameObject OnClickAttackable;
+	public EventGameObject OnClickHarvestable;
+	/*
+	public EventGameObject OnClickHarvestable;
+	*/
 
     private bool _useDefaultCursor = false;
 
@@ -52,19 +58,26 @@ public class MouseManager : MonoBehaviour
                 Cursor.SetCursor(target, new Vector2(16, 16), CursorMode.Auto);
             }
 
-            //Check if collision is attackable
-            bool isAttackable = hit.collider.GetComponent(typeof(IAttackable)) != null;
-            if (isAttackable)
-            {
-                Cursor.SetCursor(sword, new Vector2(0, 0), CursorMode.Auto);
-            }
-
-            //Check if collision is harvestable
-            bool isHarvestable = hit.collider.tag == "Harvestable";
-            if (isHarvestable) {
-                Cursor.SetCursor(pointer, new Vector2(0, 0), CursorMode.Auto);
-            }
-
+			//Check if collision is attackable
+			bool isAttackable = hit.collider.GetComponent(typeof(IAttackable)) != null;
+			if (isAttackable)
+			{
+				Cursor.SetCursor(sword, new Vector2(0, 0), CursorMode.Auto);
+			}
+			//Check if collision is harvestable
+			bool isHarvestable = hit.collider.tag == "Harvestable";
+			if (isHarvestable)
+			{
+				Cursor.SetCursor(pointer, new Vector2(0, 0), CursorMode.Auto);
+			}
+			/*
+			//Check if collision is harvestable
+			bool isHarvestable = (hit.collider.tag == "Harvestable");
+			if (isHarvestable)
+			{
+				Cursor.SetCursor(shovel, new Vector2(0, 0), CursorMode.Auto);
+			}
+			*/
             // If environment surface is clicked, invoke callbacks.
             if (Input.GetMouseButtonDown(0))
             {
@@ -74,13 +87,19 @@ public class MouseManager : MonoBehaviour
                     OnClickAttackable.Invoke(attackable);
                     return;
                 }
-
-                if (isHarvestable) {
-                    GameObject harvestable = hit.collider.gameObject;
-                    OnClickHarvestable.Invoke(harvestable);
-                    return;
-                }
-
+				if (isHarvestable)
+				{
+					GameObject harvestable = hit.collider.gameObject;
+					OnClickHarvestable.Invoke(harvestable);
+					return;
+				}
+				/*
+				if (isHarvestable) {
+					GameObject harvestable = hit.collider.gameObject;
+					OnClickHarvestable.Invoke(harvestable);
+					return;
+				}
+*/
                 if (door)
                 {
                     Transform doorway = hit.collider.gameObject.transform;

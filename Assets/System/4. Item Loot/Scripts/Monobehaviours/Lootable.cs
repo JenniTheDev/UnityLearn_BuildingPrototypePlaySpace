@@ -1,29 +1,38 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.Versioning;
-using System.Security.Cryptography;
 using UnityEngine;
 
 public class Lootable : MonoBehaviour {
 
-    // Use this for initialization
-    void Start() {
+	public int minSwingsNeeded = 2;
+	public int maxSwingsNeeded = 6;
 
-    }
+	// Use this for initialization
+	void Start () {
+		
+	}
+	
+	// Update is called once per frame
+	void Update () {
+		
+	}
 
-    // Update is called once per frame
-    void Update() {
+	public void Loot(int digSwings)
+	{
+		Instantiate (Resources.Load ("DirtEffect"), transform.position, transform.rotation);
+		if (digSwings > Random.Range (minSwingsNeeded, maxSwingsNeeded)) {
+			Instantiate (Resources.Load ("Chest"), transform.position, transform.rotation);
+			Destroy (gameObject);
+		}
+	}
 
-    }
-
-    public void Loot(int digSwings) {
-        if (digSwings > UnityEngine.Random.Range(0, 4)) {
-            Instantiate(Resources.Load("Chest"), transform.position, transform.rotation);
-            Destroy(gameObject);
-        }
-    }
-
-
-
+	/*
+	public void Loot(int digSwings)
+	{
+		if(digSwings > Random.Range(0,4)){
+			Destroy (gameObject);
+			Instantiate (Resources.Load ("Chest"), transform.position, transform.rotation);
+		}
+	}
+	*/
 }

@@ -16,6 +16,8 @@ TagManager:
   - Weapon
   - Chest
   - Harvestable
+  - Boost
+  - HeroHead
   layers:
   - Default
   - TransparentFX
