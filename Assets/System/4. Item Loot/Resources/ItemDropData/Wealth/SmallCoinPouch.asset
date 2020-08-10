@@ -18,8 +18,9 @@ MonoBehaviour:
   spawnChanceWeight: 30
   itemMaterial: {fileID: 2100000, guid: c9617465eddc171419647156cccabce6, type: 2}
   itemIcon: {fileID: 0}
-  itemObject: {fileID: 54602140791570588, guid: c300d9ebf3a2b3f4f87c051aa8a6a184,
+  itemSpawnObject: {fileID: 54602140791570588, guid: c300d9ebf3a2b3f4f87c051aa8a6a184,
     type: 2}
+  weaponSlotObject: {fileID: 0}
   isEquipped: 0
   isInteractable: 1
   isStorable: 0

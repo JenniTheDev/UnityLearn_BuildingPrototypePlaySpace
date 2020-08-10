@@ -15,6 +15,7 @@ public class MouseManager : MonoBehaviour
     public EventVector3 OnClickEnvironment;
     public EventVector3 OnRightClickEnvironment;
     public EventGameObject OnClickAttackable;
+    public EventGameObject OnClickHarvestable;
 
     private bool _useDefaultCursor = false;
 
@@ -58,6 +59,12 @@ public class MouseManager : MonoBehaviour
                 Cursor.SetCursor(sword, new Vector2(0, 0), CursorMode.Auto);
             }
 
+            //Check if collision is harvestable
+            bool isHarvestable = hit.collider.tag == "Harvestable";
+            if (isHarvestable) {
+                Cursor.SetCursor(pointer, new Vector2(0, 0), CursorMode.Auto);
+            }
+
             // If environment surface is clicked, invoke callbacks.
             if (Input.GetMouseButtonDown(0))
             {
@@ -65,6 +72,12 @@ public class MouseManager : MonoBehaviour
                 {
                     GameObject attackable = hit.collider.gameObject;
                     OnClickAttackable.Invoke(attackable);
+                    return;
+                }
+
+                if (isHarvestable) {
+                    GameObject harvestable = hit.collider.gameObject;
+                    OnClickHarvestable.Invoke(harvestable);
                     return;
                 }
 

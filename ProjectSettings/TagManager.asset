@@ -15,6 +15,7 @@ TagManager:
   - ChestArmor
   - Weapon
   - Chest
+  - Harvestable
   layers:
   - Default
   - TransparentFX
